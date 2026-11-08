@@ -66,8 +66,8 @@
       <h2>Write to us</h2>
     </div>
     <dl>
-      <dt>General</dt><dd><a href="mailto:info@estebanpress.com">info@estebanpress.com</a></dd>
-      <dt>Rights &amp; permissions</dt><dd><a href="mailto:rights@estebanpress.com">rights@estebanpress.com</a></dd>
+      <dt>General</dt><dd><a class="eml" data-u="info" data-d="estebanpress.com" href="#contact">info [at] estebanpress [dot] com</a></dd>
+      <dt>Rights &amp; permissions</dt><dd><a class="eml" data-u="rights" data-d="estebanpress.com" href="#contact">rights [at] estebanpress [dot] com</a></dd>
     </dl>
   </div>
 </section>
@@ -75,5 +75,13 @@
 <footer>
   <div class="wrap"><span>© 2026 Esteban Press</span><span>estebanpress.com</span></div>
 </footer>
+<script>
+/* Builds email links in the browser so the address never appears in the page source (keeps most spam bots out). */
+document.querySelectorAll('a.eml').forEach(function (a) {
+  var addr = a.dataset.u + '@' + a.dataset.d;
+  a.href = 'mailto:' + addr;
+  if (!a.dataset.keep) a.textContent = addr;
+});
+</script>
 </body>
 </html>
